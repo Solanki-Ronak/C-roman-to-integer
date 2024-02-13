@@ -1,0 +1,133 @@
+#include <iostream>
+#include <string>
+
+class Solution {
+public:
+    int romanToInt(std::string s) {
+        int n = s.length();
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (s[i] == 'I' && s[i + 1] == 'V' && i + 1 < n) {
+                sum += 4;
+                i++;
+            } else if (s[i] == 'I' && s[i + 1] == 'X' && i + 1 < n) {
+                sum += 9;
+                i++;
+            } else if (s[i] == 'X' && s[i + 1] == 'L' && i + 1 < n) {
+                sum += 40;
+                i++;
+            } else if (s[i] == 'X' && s[i + 1] == 'C' && i + 1 < n) {
+                sum += 90;
+                i++;
+            } else if (s[i] == 'C' && s[i + 1] == 'D' && i + 1 < n) {
+                sum += 400;
+                i++;
+            } else if (s[i] == 'C' && s[i + 1] == 'M' && i + 1 < n) {
+                sum += 900;
+                i++;
+            } else if (s[i] == 'I') {
+                sum += 1;
+            } else if (s[i] == 'V') {
+                sum += 5;
+            } else if (s[i] == 'X') {
+                sum += 10;
+            } else if (s[i] == 'L') {
+                sum += 50;
+            } else if (s[i] == 'C') {
+                sum += 100;
+            } else if (s[i] == 'D') {
+                sum += 500;
+            } else if (s[i] == 'M') {
+                sum += 1000;
+            } else {
+                std::cout << "Invalid" << std::endl;
+                return 0;
+            }
+        }
+        std::cout << s << ": " << sum << std::endl;
+        return sum;
+    }
+};
+
+int main() {
+    Solution solution;
+
+    // Test cases with descriptions
+    std::cout << "First number: ";
+     std::cout << std::endl;
+    solution.romanToInt("I");
+    std::cout << std::endl;
+
+    std::cout << "Repetition: ";
+     std::cout << std::endl;
+    solution.romanToInt("II");
+    std::cout << std::endl;
+
+    std::cout << "Subtractive notation (SN): ";
+     std::cout << std::endl;
+    solution.romanToInt("IV");
+    std::cout << std::endl;
+
+    std::cout << "Single Letter: ";
+     std::cout << std::endl;
+    solution.romanToInt("V");
+    std::cout << std::endl;
+
+    std::cout << "Single Letter: ";
+     std::cout << std::endl;
+    solution.romanToInt("X");
+    std::cout << std::endl;
+
+    std::cout << "Single Letter: ";
+     std::cout << std::endl;
+    solution.romanToInt("L");
+    std::cout << std::endl;
+
+    std::cout << "Single Letter:  ";
+     std::cout << std::endl;
+    solution.romanToInt("C");
+    std::cout << std::endl;
+
+    std::cout << "Single Letter:  ";
+     std::cout << std::endl;
+    solution.romanToInt("D");
+    std::cout << std::endl;
+
+    std::cout << "Single Letter: ";
+ std::cout << std::endl;
+    solution.romanToInt("M");
+    std::cout << std::endl;
+
+    std::cout << "Many Letters: ";
+     std::cout << std::endl;
+    solution.romanToInt("XI");
+    std::cout << std::endl;
+
+    std::cout << "With and without SN: ";
+ std::cout << std::endl;
+    solution.romanToInt("XIV");
+    std::cout << std::endl;
+
+    std::cout << "Invalid and valid Letter: ";
+     std::cout << std::endl;
+    solution.romanToInt("XIZ");
+    std::cout << std::endl;
+
+    std::cout << "Not Valid:";
+ std::cout << std::endl;
+    solution.romanToInt("VVZ");
+    std::cout << std::endl;
+
+    std::cout << "Invalid Letter: ";
+     std::cout << std::endl;
+    solution.romanToInt("Z");
+    std::cout << std::endl;
+
+    std::cout << "Null: ";
+     std::cout << std::endl;
+    solution.romanToInt("");
+    std::cout << std::endl;
+
+    return 0;
+}
